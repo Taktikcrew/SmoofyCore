@@ -7,6 +7,8 @@ package de.smoofy.core.api.time;
  * Created - 27.09.24, 23:27
  */
 
+import de.smoofy.core.api.player.ICorePlayer;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -114,13 +116,13 @@ public interface ITimeHandler {
      */
     boolean beforeToday(String time);
 
-    // todo
     /**
      * Get the time zone in players language.
      *
+     * @param player the player
      * @return the time zone
      */
-    String timeZone(/*ICorePlayer player*/);
+    String timeZone(ICorePlayer player);
 
     /**
      * Get the LocalDateTime of millis.

@@ -7,6 +7,7 @@ package de.smoofy.core.base.time;
  * Created - 28.09.24, 00:04
  */
 
+import de.smoofy.core.api.player.ICorePlayer;
 import de.smoofy.core.api.time.ITimeHandler;
 import de.smoofy.core.api.time.TimeUnit;
 import org.apache.commons.lang3.NotImplementedException;
@@ -112,7 +113,7 @@ public class TimeHandlerImpl implements ITimeHandler {
     }
 
     @Override
-    public String timeZone() {
+    public String timeZone(ICorePlayer player) {
         throw new NotImplementedException("Method not implemented yet.");
     }
 
