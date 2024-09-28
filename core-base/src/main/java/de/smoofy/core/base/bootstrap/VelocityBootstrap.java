@@ -15,6 +15,7 @@ import com.velocitypowered.api.proxy.ProxyServer;
 import de.smoofy.core.base.CoreBase;
 import lombok.Getter;
 import lombok.experimental.Accessors;
+import org.slf4j.Logger;
 
 @Getter
 @Accessors(fluent = true)
@@ -26,10 +27,12 @@ public class VelocityBootstrap {
     private static VelocityBootstrap instance;
 
     private final ProxyServer proxyServer;
+    private final Logger logger;
 
     @Inject
-    public VelocityBootstrap(ProxyServer proxyServer) {
+    public VelocityBootstrap(ProxyServer proxyServer, Logger logger) {
         this.proxyServer = proxyServer;
+        this.logger = logger;
     }
 
     @Subscribe
