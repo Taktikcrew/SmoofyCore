@@ -11,6 +11,7 @@ import de.smoofy.core.api.fetcher.IUUIDFetcher;
 import de.smoofy.core.api.localization.ILocalize;
 import de.smoofy.core.api.logger.ILogger;
 import de.smoofy.core.api.message.IMessageBuilder;
+import de.smoofy.core.api.player.ICorePlayerProvider;
 import de.smoofy.core.api.time.ITimeHandler;
 import lombok.Getter;
 import lombok.experimental.Accessors;
@@ -66,6 +67,13 @@ public abstract class Core {
      * @return the {@link IMessageBuilder}
      */
     public abstract IMessageBuilder messageBuilder(String text);
+
+    /**
+     * Get the core player provider.
+     *
+     * @return the {@link ICorePlayerProvider}
+     */
+    public abstract ICorePlayerProvider corePlayerProvider();
 
     /**
      * Get the time handler.

@@ -12,11 +12,13 @@ import de.smoofy.core.api.fetcher.IUUIDFetcher;
 import de.smoofy.core.api.localization.ILocalize;
 import de.smoofy.core.api.logger.ILogger;
 import de.smoofy.core.api.message.IMessageBuilder;
+import de.smoofy.core.api.player.ICorePlayerProvider;
 import de.smoofy.core.api.time.ITimeHandler;
 import de.smoofy.core.base.fetcher.UUIDFetcherImpl;
 import de.smoofy.core.base.localize.LocalizeImpl;
 import de.smoofy.core.base.logger.LoggerImpl;
 import de.smoofy.core.base.message.MessageBuilderImpl;
+import de.smoofy.core.base.player.CorePlayerProviderImpl;
 import de.smoofy.core.base.time.TimeHandlerImpl;
 
 public class CoreBase extends Core {
@@ -27,6 +29,7 @@ public class CoreBase extends Core {
     private final IUUIDFetcher uuidFetcher;
     private final ILocalize localize;
     private final ILogger logger;
+    private final ICorePlayerProvider corePlayerProvider;
     private final ITimeHandler timeHandler;
 
     // Paper
@@ -39,6 +42,7 @@ public class CoreBase extends Core {
         this.uuidFetcher = new UUIDFetcherImpl();
         this.localize = new LocalizeImpl();
         this.logger = new LoggerImpl();
+        this.corePlayerProvider = new CorePlayerProviderImpl();
         this.timeHandler = new TimeHandlerImpl();
     }
 
@@ -65,6 +69,11 @@ public class CoreBase extends Core {
     @Override
     public IMessageBuilder messageBuilder(String text) {
         return new MessageBuilderImpl(text);
+    }
+
+    @Override
+    public ICorePlayerProvider corePlayerProvider() {
+        return this.corePlayerProvider;
     }
 
     @Override
