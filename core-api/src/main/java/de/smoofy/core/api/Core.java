@@ -15,7 +15,9 @@ import de.smoofy.core.api.player.ICorePlayerProvider;
 import de.smoofy.core.api.time.ITimeHandler;
 import lombok.Getter;
 import lombok.experimental.Accessors;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public abstract class Core {
 
@@ -56,9 +58,10 @@ public abstract class Core {
     /**
      * Get the logger.
      *
+     * @param plugin the plugin
      * @return the {@link ILogger}
      */
-    public abstract ILogger logger();
+    public abstract ILogger logger(@Nullable JavaPlugin plugin);
 
     /**
      * Get the message builder.
