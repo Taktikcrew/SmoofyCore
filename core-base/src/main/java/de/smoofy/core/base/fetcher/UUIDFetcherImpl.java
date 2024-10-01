@@ -49,7 +49,8 @@ public class UUIDFetcherImpl implements IUUIDFetcher {
     @Override
     public String name(@NotNull UUID uuid) {
         if (this.nameCache.containsKey(uuid)) return nameCache.get(uuid);
-        String url = this.callURL("https://sessionserver.mojang.com/session/minecraft/profile/" + uuid.toString().replace("-", ""));
+        String url = this.callURL("https://sessionserver.mojang.com/session/minecraft/profile/" +
+                uuid.toString().replace("-", ""));
         if (url == null) return null;
         Matcher matcher = NAME_PATTERN.matcher(url);
         if (matcher.find()) {
