@@ -1,6 +1,7 @@
 plugins {
     id("java")
     id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("io.papermc.paperweight.userdev") version "1.7.3"
 }
 
 group = "de.smoofy.core"
@@ -18,16 +19,19 @@ dependencies {
     implementation("de.smoofy.core:core-api:1.0-SNAPSHOT")
 
     compileOnly("io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT")
+    paperweight.paperDevBundle("1.21.1-R0.1-SNAPSHOT")
+
     compileOnly("com.velocitypowered:velocity-api:3.1.1")
 
-    annotationProcessor("org.projectlombok:lombok:1.18.28")
-    compileOnly("org.projectlombok:lombok:1.18.28")
+    annotationProcessor("org.projectlombok:lombok:1.18.34")
+    compileOnly("org.projectlombok:lombok:1.18.34")
 }
 
-tasks {
-    shadowJar {
-        archiveBaseName.set("Core")
-        archiveClassifier.set("")
+tasks.shadowJar {
+    archiveBaseName.set("Core")
+    archiveClassifier.set("")
+    manifest {
+        attributes["paperweight-mappings-namespace"] = "spigot"
     }
 }
 
@@ -37,3 +41,6 @@ tasks.withType<JavaCompile>().configureEach {
     targetCompatibility = JavaVersion.VERSION_21.toString()
 }
 
+tasks.assemble {
+    dependsOn(tasks.reobfJar)
+}
