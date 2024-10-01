@@ -1,0 +1,7 @@
+name: CoreExample
+version: 1.0-SNAPSHOT
+author: Smoofy
+depend: [Core]
+main: de.smoofy.core.examples.CoreExample
+commands:
+  test:
