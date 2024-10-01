@@ -20,6 +20,8 @@ import de.smoofy.core.base.logger.LoggerImpl;
 import de.smoofy.core.base.message.MessageBuilderImpl;
 import de.smoofy.core.base.player.CorePlayerProviderImpl;
 import de.smoofy.core.base.time.TimeHandlerImpl;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.Nullable;
 
 public class CoreBase extends Core {
 
@@ -28,7 +30,6 @@ public class CoreBase extends Core {
     // Global
     private final IUUIDFetcher uuidFetcher;
     private final ILocalize localize;
-    private final ILogger logger;
     private final ICorePlayerProvider corePlayerProvider;
     private final ITimeHandler timeHandler;
 
@@ -41,7 +42,6 @@ public class CoreBase extends Core {
 
         this.uuidFetcher = new UUIDFetcherImpl();
         this.localize = new LocalizeImpl();
-        this.logger = new LoggerImpl();
         this.corePlayerProvider = new CorePlayerProviderImpl();
         this.timeHandler = new TimeHandlerImpl();
     }
@@ -62,8 +62,8 @@ public class CoreBase extends Core {
     }
 
     @Override
-    public ILogger logger() {
-        return this.logger;
+    public ILogger logger(@Nullable JavaPlugin javaPlugin) {
+        return new LoggerImpl(javaPlugin);
     }
 
     @Override
