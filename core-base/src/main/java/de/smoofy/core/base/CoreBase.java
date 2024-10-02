@@ -29,7 +29,6 @@ public class CoreBase extends Core {
 
     // Global
     private final IUUIDFetcher uuidFetcher;
-    private final ILocalize localize;
     private final ICorePlayerProvider corePlayerProvider;
     private final ITimeHandler timeHandler;
 
@@ -41,7 +40,6 @@ public class CoreBase extends Core {
         this.paper = paper;
 
         this.uuidFetcher = new UUIDFetcherImpl();
-        this.localize = new LocalizeImpl();
         this.corePlayerProvider = new CorePlayerProviderImpl();
         this.timeHandler = new TimeHandlerImpl();
     }
@@ -57,8 +55,8 @@ public class CoreBase extends Core {
     }
 
     @Override
-    public ILocalize localize() {
-        return this.localize;
+    public ILocalize localize(Class<?> clazz) {
+        return new LocalizeImpl(clazz);
     }
 
     @Override

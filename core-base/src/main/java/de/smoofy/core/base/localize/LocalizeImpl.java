@@ -12,14 +12,22 @@ import de.smoofy.core.api.localization.ILocalize;
 import de.smoofy.core.api.localization.Language;
 import lombok.SneakyThrows;
 
-import java.io.FileInputStream;
+import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Properties;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 public class LocalizeImpl implements ILocalize {
 
+    private final Class<?> clazz;
+
     private final Map<Language, Properties> languageProperties = Maps.newHashMap();
+
+    public LocalizeImpl(Class<?> clazz) {
+        this.clazz = clazz;
+    }
 
     @Override
     public void loadLanguages(Language... languages) {
@@ -33,15 +41,24 @@ public class LocalizeImpl implements ILocalize {
         if (message == null) {
             return key;
         }
-        return String.format(message, replacements);
+        return MessageFormat.format(message, replacements);
     }
 
     @SneakyThrows
     private void cacheLanguageMessages(Language language) {
-        var fileInputStream = new FileInputStream("src/main/resources/language/" + language.fileName());
-        var properties = new Properties();
-        properties.load(fileInputStream);
-        this.languageProperties.put(language, properties);
-        fileInputStream.close();
+        var codeSource = this.clazz.getProtectionDomain().getCodeSource();
+        var jar = codeSource.getLocation();
+        var zipInputStream = new ZipInputStream(jar.openStream());
+        ZipEntry zipEntry;
+        while ((zipEntry = zipInputStream.getNextEntry()) != null) {
+           var entry = zipEntry.getName();
+           if (entry.contains(language.fileName())) {
+               var properties = new Properties();
+               properties.load(zipInputStream);
+               this.languageProperties.put(language, properties);
+               zipInputStream.close();
+               break;
+           }
+        }
     }
 }
