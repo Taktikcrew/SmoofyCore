@@ -1,10 +1,10 @@
-package de.smoofy.core.api.item;
+package de.smoofy.core.api.builder;
 
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 27.09.24, 22:55
+ * Created - 02.10.24, 10:55
  */
 
 import com.google.common.collect.Lists;
@@ -35,30 +35,30 @@ public class ItemBuilder {
         this.itemMeta = this.itemStack.getItemMeta();
     }
 
+    public static ItemBuilder of(@NotNull ItemStack itemStack) {
+        return new ItemBuilder(itemStack);
+    }
+
     private ItemBuilder(ItemStack itemStack, Consumer<InventoryClickEvent> consumer) {
         this(itemStack);
         this.consumer = consumer;
-    }
-
-    private ItemBuilder(Material material) {
-        this(new ItemStack(material));
-    }
-
-    private ItemBuilder(Material material, Consumer<InventoryClickEvent> consumer) {
-        this(material);
-        this.consumer = consumer;
-    }
-
-    public static ItemBuilder of(@NotNull ItemStack itemStack) {
-        return new ItemBuilder(itemStack);
     }
 
     public static ItemBuilder of(@NotNull ItemStack itemStack, @NotNull Consumer<InventoryClickEvent> consumer) {
         return new ItemBuilder(itemStack, consumer);
     }
 
+    private ItemBuilder(Material material) {
+        this(new ItemStack(material));
+    }
+
     public static ItemBuilder of(@NotNull Material material) {
         return new ItemBuilder(material);
+    }
+
+    private ItemBuilder(Material material, Consumer<InventoryClickEvent> consumer) {
+        this(material);
+        this.consumer = consumer;
     }
 
     public static ItemBuilder of(@NotNull Material material, @NotNull Consumer<InventoryClickEvent> consumer) {
