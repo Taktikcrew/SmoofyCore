@@ -1,6 +1,7 @@
 name: CoreExample
 version: 1.0-SNAPSHOT
 author: Smoofy
+api-version: 1.21
 depend: [Core]
 main: de.smoofy.core.examples.CoreExample
 commands:

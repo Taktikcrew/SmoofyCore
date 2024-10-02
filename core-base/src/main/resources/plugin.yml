@@ -1,4 +1,5 @@
 name: Core
 version: 1.0-SNAPSHOT
 author: Smoofy
+api-version: 1.21
 main: de.smoofy.core.base.bootstrap.PaperBootstrap
