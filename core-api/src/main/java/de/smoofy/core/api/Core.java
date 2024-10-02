@@ -7,6 +7,7 @@ package de.smoofy.core.api;
  * Created - 27.09.24, 22:41
  */
 
+import de.smoofy.core.api.config.IConfig;
 import de.smoofy.core.api.fetcher.IUUIDFetcher;
 import de.smoofy.core.api.localization.ILocalize;
 import de.smoofy.core.api.logger.ILogger;
@@ -18,6 +19,8 @@ import lombok.experimental.Accessors;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.io.File;
 
 public abstract class Core {
 
@@ -40,6 +43,15 @@ public abstract class Core {
      * @return true if the server is running on paper, false otherwise
      */
     public abstract boolean isPaper();
+
+    /**
+     * Get the config.
+     *
+     * @param directory the directory
+     * @param fileName the file name
+     * @return the {@link IConfig}
+     */
+    public abstract IConfig config(File directory, String fileName);
 
     /**
      * Get the UUID fetcher.

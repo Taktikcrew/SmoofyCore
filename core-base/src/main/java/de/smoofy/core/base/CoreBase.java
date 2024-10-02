@@ -8,12 +8,14 @@ package de.smoofy.core.base;
  */
 
 import de.smoofy.core.api.Core;
+import de.smoofy.core.api.config.IConfig;
 import de.smoofy.core.api.fetcher.IUUIDFetcher;
 import de.smoofy.core.api.localization.ILocalize;
 import de.smoofy.core.api.logger.ILogger;
 import de.smoofy.core.api.message.IMessageBuilder;
 import de.smoofy.core.api.player.ICorePlayerProvider;
 import de.smoofy.core.api.time.ITimeHandler;
+import de.smoofy.core.base.config.ConfigImpl;
 import de.smoofy.core.base.fetcher.UUIDFetcherImpl;
 import de.smoofy.core.base.localize.LocalizeImpl;
 import de.smoofy.core.base.logger.LoggerImpl;
@@ -22,6 +24,8 @@ import de.smoofy.core.base.player.CorePlayerProviderImpl;
 import de.smoofy.core.base.time.TimeHandlerImpl;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.Nullable;
+
+import java.io.File;
 
 public class CoreBase extends Core {
 
@@ -47,6 +51,11 @@ public class CoreBase extends Core {
     @Override
     public boolean isPaper() {
         return this.paper;
+    }
+
+    @Override
+    public IConfig config(File directory, String fileName) {
+        return new ConfigImpl(directory, fileName);
     }
 
     @Override

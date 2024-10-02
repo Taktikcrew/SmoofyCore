@@ -8,6 +8,7 @@ package de.smoofy.core.examples.commands;
 
 import de.smoofy.core.examples.builder.InventoryBuilderExample;
 import de.smoofy.core.examples.builder.ItemBuilderExample;
+import de.smoofy.core.examples.config.ConfigExample;
 import de.smoofy.core.examples.fetcher.UUIDFetcherExample;
 import de.smoofy.core.examples.localize.LocalizeExample;
 import de.smoofy.core.examples.logger.LoggerExample;
@@ -27,6 +28,7 @@ public class TestCommand implements CommandExecutor, TabCompleter {
 
     private final InventoryBuilderExample inventoryBuilderExample = new InventoryBuilderExample();
     private final ItemBuilderExample itemBuilderExample = new ItemBuilderExample();
+    private final ConfigExample configExample = new ConfigExample();
     private final UUIDFetcherExample uuidFetcherExample = new UUIDFetcherExample();
     private final LocalizeExample localizeExample = new LocalizeExample();
     private final LoggerExample loggerExample = new LoggerExample();
@@ -46,6 +48,8 @@ public class TestCommand implements CommandExecutor, TabCompleter {
         switch (args[0].toLowerCase()) {
             case "inventory" -> inventoryBuilderExample.test(player);
             case "item" -> itemBuilderExample.test(player);
+            case "config-write" -> configExample.testSaveObject();
+            case "config-read" -> configExample.testLoadObject(player);
             case "uuid" -> uuidFetcherExample.testUUID(player, args[1]);
             case "name" -> uuidFetcherExample.testName(player, args[1]);
             case "localize" -> localizeExample.test(player);
@@ -59,7 +63,7 @@ public class TestCommand implements CommandExecutor, TabCompleter {
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (args.length == 1) {
-            return List.of("inventory", "item", "uuid", "name", "localize", "log", "message");
+            return List.of("inventory", "item", "config-write", "config-read", "uuid", "name", "localize", "log", "message");
         }
         if (args.length == 2) {
             if (args[0].equalsIgnoreCase("uuid")) {
