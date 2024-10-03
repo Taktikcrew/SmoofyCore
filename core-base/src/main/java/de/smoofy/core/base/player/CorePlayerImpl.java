@@ -12,10 +12,15 @@ import de.smoofy.core.api.player.ICorePlayer;
 import de.smoofy.core.base.bootstrap.VelocityBootstrap;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.title.Title;
 import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitTask;
+import org.jetbrains.annotations.NotNull;
 
+import java.time.Duration;
 import java.util.UUID;
 
 // TODO: Implement all methods
@@ -23,6 +28,8 @@ public class CorePlayerImpl implements ICorePlayer {
 
     private final UUID uniqueId;
     private final String name;
+
+    private BukkitTask actionBarTask;
 
     public CorePlayerImpl(Player player) {
         this.uniqueId = player.getUniqueId();
@@ -95,26 +102,84 @@ public class CorePlayerImpl implements ICorePlayer {
 
     @Override
     public void pMessage(Component message) {
-        throw new NotImplementedException("Not implemented yet.");
+        this.message(MiniMessage.miniMessage().deserialize("<dark_gray>[<aqua>Core<dark_gray>] <white>").append(message));
     }
 
     @Override
     public void usage(String usage) {
-        throw new NotImplementedException("Not implemented yet.");
+        this.pMessage(Component.translatable("message.usage").append(Component.text(": ", NamedTextColor.DARK_GRAY))
+                .append(Component.text(usage, NamedTextColor.AQUA)));
     }
 
     @Override
     public void usage(Component prefix, String usage) {
-        throw new NotImplementedException("Not implemented yet.");
+        this.message(Component.text("[", NamedTextColor.DARK_GRAY)
+                .append(prefix)
+                .append(Component.text("] ", NamedTextColor.DARK_GRAY))
+                .append(Component.translatable("message.prefix-usage"))
+                .append(Component.text(": ", NamedTextColor.DARK_GRAY))
+                .append(Component.text(usage, prefix.color())));
     }
 
     @Override
     public void noPerms() {
+        this.message(Component.text("Unknown command. Type \"/help\" for help."));
+    }
+
+    @Override
+    public void notOnline(String target) {
+        var targetPlayer = Core.instance().corePlayerProvider().corePlayer(target);
+        if (targetPlayer == null) {
+            this.pMessage(Component.translatable("message.player-not-found", Component.text(target)));
+        } else {
+            this.pMessage(Component.translatable("message.player-not-online", targetPlayer.displayName()));
+        }
+    }
+
+    @Override
+    public void sendActionBar(Component message) {
+        if (this.bukkitPlayer() == null) {
+            this.actionBarTask.cancel();
+            return;
+        }
+        this.bukkitPlayer().sendActionBar(message);
+    }
+
+    @Override
+    public void sendActionBarPermanent(Component message) {
+        this.actionBarTask = Core.instance().coreTask().repeatAsync(() -> this.sendActionBar(message), 0, 20);
+    }
+
+    @Override
+    public void setTablist(boolean ingame) {
         throw new NotImplementedException("Not implemented yet.");
     }
 
     @Override
-    public void notOnline(ICorePlayer target) {
-        throw new NotImplementedException("Not implemented yet.");
+    public void sendTitle(@NotNull Component title, @NotNull Component subtitle, int fadeIn, int stay, int fadeOut) {
+        if (fadeIn == -1) {
+            fadeIn = 1;
+        }
+        if (stay == -1) {
+            stay = 3;
+        }
+        if (fadeOut == -1) {
+            fadeOut = 1;
+        }
+        this.bukkitPlayer().showTitle(Title.title(title, subtitle, Title.Times.times(Duration.ofSeconds(fadeIn),
+                Duration.ofSeconds(stay), Duration.ofSeconds(fadeOut))));
+    }
+
+    @Override
+    public void resetTitle() {
+        this.bukkitPlayer().resetTitle();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof ICorePlayer player)) {
+            return false;
+        }
+        return this.uuid().equals(player.uuid()) && this.name.equals(player.name());
     }
 }

@@ -10,6 +10,7 @@ package de.smoofy.core.api.player;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
@@ -117,6 +118,43 @@ public interface ICorePlayer {
      *
      * @param target the target
      */
-    void notOnline(ICorePlayer target);
+    void notOnline(String target);
+
+    /**
+     * Send an action bar message to the player.
+     *
+     * @param message the message
+     */
+    void sendActionBar(Component message);
+
+    /**
+     * Send a permanent action bar message to the player.
+     *
+     * @param message the message
+     */
+    void sendActionBarPermanent(Component message);
+
+    /**
+     * Set the tablist of the player.
+     *
+     * @param minigame true if minigame tablist, otherwise false
+     */
+    void setTablist(boolean minigame);
+
+    /**
+     * Send a title to the player.
+     *
+     * @param title the title
+     * @param subtitle the subtitle
+     * @param fadeIn the fade in time in seconds
+     * @param stay the stay time in seconds
+     * @param fadeOut the fade out time in seconds
+     */
+    void sendTitle(@NotNull Component title, @NotNull Component subtitle, int fadeIn, int stay, int fadeOut);
+
+    /**
+     * Reset the title of the player.
+     */
+    void resetTitle();
 
 }
