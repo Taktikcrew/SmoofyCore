@@ -15,6 +15,7 @@ import de.smoofy.core.examples.localize.LocalizeExample;
 import de.smoofy.core.examples.logger.LoggerExample;
 import de.smoofy.core.examples.message.MessageBuilderExample;
 import de.smoofy.core.examples.modules.hologram.HologramExample;
+import de.smoofy.core.examples.player.CorePlayerExample;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -36,6 +37,7 @@ public class TestCommand implements CommandExecutor, TabCompleter {
     private final LoggerExample loggerExample = new LoggerExample();
     private final MessageBuilderExample messageBuilderExample = new MessageBuilderExample();
     private final HologramExample hologramExample = new HologramExample();
+    private final CorePlayerExample corePlayerExample = new CorePlayerExample();
 
     public TestCommand() {
         Bukkit.getPluginCommand("test").setExecutor(this);
@@ -61,6 +63,7 @@ public class TestCommand implements CommandExecutor, TabCompleter {
             case "message" -> messageBuilderExample.test(player);
             case "hologram-spawn" -> hologramExample.testSpawn(corePlayer);
             case "hologram-destroy" -> hologramExample.testDestroy(corePlayer);
+            case "coreplayer" -> corePlayerExample.test(corePlayer, args[1]);
         }
         player.sendRichMessage("<green>Test ausgeführt");
         return true;
@@ -70,7 +73,7 @@ public class TestCommand implements CommandExecutor, TabCompleter {
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (args.length == 1) {
             return List.of("inventory", "item", "config-write", "config-read", "uuid", "name", "localize", "log", "message",
-                    "hologram-spawn", "hologram-destroy");
+                    "hologram-spawn", "hologram-destroy", "coreplayer");
         }
         if (args.length == 2) {
             if (args[0].equalsIgnoreCase("uuid")) {
@@ -78,6 +81,10 @@ public class TestCommand implements CommandExecutor, TabCompleter {
             }
             if (args[0].equalsIgnoreCase("name")) {
                 return Bukkit.getOnlinePlayers().stream().map(player -> player.getUniqueId().toString()).toList();
+            }
+            if (args[0].equalsIgnoreCase("coreplayer")) {
+                return List.of("message", "pmessage", "usage", "pusage", "noperms", "notonline", "actionbar",
+                        "pactionbar", "title1", "title2", "title3", "title4", "resettitle");
             }
         }
         return List.of();
