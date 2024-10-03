@@ -12,6 +12,8 @@ import de.smoofy.core.api.fetcher.IUUIDFetcher;
 import de.smoofy.core.api.localization.ILocalize;
 import de.smoofy.core.api.logger.ILogger;
 import de.smoofy.core.api.message.IMessageBuilder;
+import de.smoofy.core.api.module.hologram.IHologramProvider;
+import de.smoofy.core.api.module.tasks.ICoreTask;
 import de.smoofy.core.api.player.ICorePlayerProvider;
 import de.smoofy.core.api.time.ITimeHandler;
 import lombok.Getter;
@@ -83,6 +85,20 @@ public abstract class Core {
      * @return the {@link IMessageBuilder}
      */
     public abstract IMessageBuilder messageBuilder(String text);
+
+    /**
+     * Get the hologram provider.
+     *
+     * @return the {@link IHologramProvider}
+     */
+    public abstract IHologramProvider hologramProvider();
+
+    /**
+     * Get the core task.
+     *
+     * @return the {@link ICoreTask}
+     */
+    public abstract ICoreTask coreTask();
 
     /**
      * Get the core player provider.

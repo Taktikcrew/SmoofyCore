@@ -13,6 +13,8 @@ import de.smoofy.core.api.fetcher.IUUIDFetcher;
 import de.smoofy.core.api.localization.ILocalize;
 import de.smoofy.core.api.logger.ILogger;
 import de.smoofy.core.api.message.IMessageBuilder;
+import de.smoofy.core.api.module.hologram.IHologramProvider;
+import de.smoofy.core.api.module.tasks.ICoreTask;
 import de.smoofy.core.api.player.ICorePlayerProvider;
 import de.smoofy.core.api.time.ITimeHandler;
 import de.smoofy.core.base.config.ConfigImpl;
@@ -20,6 +22,8 @@ import de.smoofy.core.base.fetcher.UUIDFetcherImpl;
 import de.smoofy.core.base.localize.LocalizeImpl;
 import de.smoofy.core.base.logger.LoggerImpl;
 import de.smoofy.core.base.message.MessageBuilderImpl;
+import de.smoofy.core.base.paper.modules.hologram.HologramProviderImpl;
+import de.smoofy.core.base.paper.modules.task.CoreTaskImpl;
 import de.smoofy.core.base.player.CorePlayerProviderImpl;
 import de.smoofy.core.base.time.TimeHandlerImpl;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -37,6 +41,8 @@ public class CoreBase extends Core {
     private final ITimeHandler timeHandler;
 
     // Paper
+    private IHologramProvider hologramProvider;
+    private ICoreTask coreTask;
 
     public CoreBase(boolean paper) {
         Core.instance(this);
@@ -46,6 +52,10 @@ public class CoreBase extends Core {
         this.uuidFetcher = new UUIDFetcherImpl();
         this.corePlayerProvider = new CorePlayerProviderImpl();
         this.timeHandler = new TimeHandlerImpl();
+        if (paper) {
+            this.hologramProvider = new HologramProviderImpl();
+            this.coreTask = new CoreTaskImpl();
+        }
     }
 
     @Override
@@ -76,6 +86,16 @@ public class CoreBase extends Core {
     @Override
     public IMessageBuilder messageBuilder(String text) {
         return new MessageBuilderImpl(text);
+    }
+
+    @Override
+    public IHologramProvider hologramProvider() {
+        return this.hologramProvider;
+    }
+
+    @Override
+    public ICoreTask coreTask() {
+        return this.coreTask;
     }
 
     @Override

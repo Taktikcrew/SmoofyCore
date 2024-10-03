@@ -13,6 +13,9 @@ repositories {
 
     maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://nexus.velocitypowered.com/repository/maven-public/")
+
+    maven("https://repo.codemc.io/repository/maven-releases/")
+    maven("https://maven.evokegames.gg/snapshots")
 }
 
 dependencies {
@@ -22,6 +25,9 @@ dependencies {
     paperweight.paperDevBundle("1.21.1-R0.1-SNAPSHOT")
 
     compileOnly("com.velocitypowered:velocity-api:3.1.1")
+
+    implementation("com.github.retrooper:packetevents-spigot:2.5.0")
+    implementation("me.tofaa.entitylib:spigot:2.4.10-SNAPSHOT")
 
     annotationProcessor("org.projectlombok:lombok:1.18.34")
     compileOnly("org.projectlombok:lombok:1.18.34")
