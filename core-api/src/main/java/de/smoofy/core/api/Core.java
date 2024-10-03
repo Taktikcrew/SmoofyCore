@@ -65,10 +65,9 @@ public abstract class Core {
     /**
      * Get the localization.
      *
-     * @param clazz the main class
      * @return the {@link ILocalize}
      */
-    public abstract ILocalize localize(Class<?> clazz);
+    public abstract ILocalize localize();
 
     /**
      * Get the logger.

@@ -7,7 +7,6 @@ package de.smoofy.core.api.player;
  * Created - 28.09.24, 11:44
  */
 
-import de.smoofy.core.api.localization.Language;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.entity.Player;
@@ -43,13 +42,6 @@ public interface ICorePlayer {
      * @return the player's color
      */
     NamedTextColor color();
-
-    /**
-     * Get the language of the player.
-     *
-     * @return the player's language
-     */
-    Language language();
 
     /**
      * Get the bukkit player.

@@ -8,7 +8,6 @@ package de.smoofy.core.base.player;
  */
 
 import de.smoofy.core.api.Core;
-import de.smoofy.core.api.localization.Language;
 import de.smoofy.core.api.player.ICorePlayer;
 import de.smoofy.core.base.bootstrap.VelocityBootstrap;
 import net.kyori.adventure.text.Component;
@@ -57,11 +56,6 @@ public class CorePlayerImpl implements ICorePlayer {
 
     @Override
     public NamedTextColor color() {
-        throw new NotImplementedException("Not implemented yet.");
-    }
-
-    @Override
-    public Language language() {
         throw new NotImplementedException("Not implemented yet.");
     }
 

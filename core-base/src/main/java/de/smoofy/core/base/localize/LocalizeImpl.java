@@ -7,58 +7,25 @@ package de.smoofy.core.base.localize;
  * Created - 28.09.24, 00:35
  */
 
-import com.google.common.collect.Maps;
 import de.smoofy.core.api.localization.ILocalize;
-import de.smoofy.core.api.localization.Language;
-import lombok.SneakyThrows;
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.translation.GlobalTranslator;
+import net.kyori.adventure.translation.TranslationRegistry;
+import net.kyori.adventure.util.UTF8ResourceBundleControl;
 
-import java.text.MessageFormat;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Properties;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class LocalizeImpl implements ILocalize {
 
-    private final Class<?> clazz;
-
-    private final Map<Language, Properties> languageProperties = Maps.newHashMap();
-
-    public LocalizeImpl(Class<?> clazz) {
-        this.clazz = clazz;
-    }
-
     @Override
-    public void loadLanguages(Language... languages) {
-        Arrays.stream(languages).forEach(this::cacheLanguageMessages);
-    }
-
-    @Override
-    public String translate(Language language, String key, Object... replacements) {
-        var properties = this.languageProperties.get(language);
-        var message = properties.getProperty(key);
-        if (message == null) {
-            return key;
+    public void init(Class<?> clazz, String baseName, Locale... locales) {
+        var registry = TranslationRegistry.create(Key.key("smoofycore:messages"));
+        for (var locale : locales) {
+            var resourceBundle = ResourceBundle.getBundle("language." + baseName, locale,
+                    clazz.getClassLoader(), UTF8ResourceBundleControl.get());
+             registry.registerAll(locale, resourceBundle, false);
         }
-        return MessageFormat.format(message, replacements);
-    }
-
-    @SneakyThrows
-    private void cacheLanguageMessages(Language language) {
-        var codeSource = this.clazz.getProtectionDomain().getCodeSource();
-        var jar = codeSource.getLocation();
-        var zipInputStream = new ZipInputStream(jar.openStream());
-        ZipEntry zipEntry;
-        while ((zipEntry = zipInputStream.getNextEntry()) != null) {
-           var entry = zipEntry.getName();
-           if (entry.contains(language.fileName())) {
-               var properties = new Properties();
-               properties.load(zipInputStream);
-               this.languageProperties.put(language, properties);
-               zipInputStream.close();
-               break;
-           }
-        }
+        GlobalTranslator.translator().addSource(registry);
     }
 }

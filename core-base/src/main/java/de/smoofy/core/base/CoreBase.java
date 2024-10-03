@@ -74,8 +74,8 @@ public class CoreBase extends Core {
     }
 
     @Override
-    public ILocalize localize(Class<?> clazz) {
-        return new LocalizeImpl(clazz);
+    public ILocalize localize() {
+        return new LocalizeImpl();
     }
 
     @Override

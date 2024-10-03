@@ -7,23 +7,17 @@ package de.smoofy.core.api.localization;
  * Created - 28.09.24, 00:32
  */
 
+import java.util.Locale;
+
 public interface ILocalize {
 
     /**
-     * Load all messages from the given languages.
+     * Initializes the localization.
      *
-     * @param languages the languages to load
+     * @param clazz the plugin class
+     * @param baseName the base name of the properties file
+     * @param locales the locales to load
      */
-    void loadLanguages(Language... languages);
-
-    /**
-     * Translate a message from the given language.
-     *
-     * @param language the language to translate the message to
-     * @param key the key of the message
-     * @param replacements the replacements for the message
-     * @return the translated message
-     */
-    String translate(Language language, String key, Object... replacements);
+    void init(Class<?> clazz, String baseName, Locale... locales);
 
 }
