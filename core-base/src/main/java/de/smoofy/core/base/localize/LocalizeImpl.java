@@ -20,12 +20,12 @@ public class LocalizeImpl implements ILocalize {
 
     @Override
     public void init(Class<?> clazz, String baseName, Locale... locales) {
-        var registry = TranslationRegistry.create(Key.key("smoofycore:messages"));
+        var translationRegistry = new CoreTranslationRegistry(TranslationRegistry.create(Key.key("smoofycore:messages")));
         for (var locale : locales) {
             var resourceBundle = ResourceBundle.getBundle("language." + baseName, locale,
                     clazz.getClassLoader(), UTF8ResourceBundleControl.get());
-             registry.registerAll(locale, resourceBundle, false);
+            translationRegistry.registerAll(locale, resourceBundle, false);
         }
-        GlobalTranslator.translator().addSource(registry);
+        GlobalTranslator.translator().addSource(translationRegistry);
     }
 }
