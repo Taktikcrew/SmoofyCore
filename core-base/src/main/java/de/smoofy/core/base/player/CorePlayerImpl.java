@@ -107,7 +107,9 @@ public class CorePlayerImpl implements ICorePlayer {
 
     @Override
     public void usage(String usage) {
-        this.pMessage(Component.translatable("message.usage").append(Component.text(": ", NamedTextColor.DARK_GRAY))
+        this.message(MiniMessage.miniMessage().deserialize("<dark_gray>[<aqua>Core<dark_gray>] ")
+                .append(Component.translatable("message.usage"))
+                .append(Component.text(" ", NamedTextColor.DARK_GRAY))
                 .append(Component.text(usage, NamedTextColor.AQUA)));
     }
 
@@ -116,8 +118,8 @@ public class CorePlayerImpl implements ICorePlayer {
         this.message(Component.text("[", NamedTextColor.DARK_GRAY)
                 .append(prefix)
                 .append(Component.text("] ", NamedTextColor.DARK_GRAY))
-                .append(Component.translatable("message.prefix-usage"))
-                .append(Component.text(": ", NamedTextColor.DARK_GRAY))
+                .append(Component.translatable("message.usage"))
+                .append(Component.text(" ", NamedTextColor.DARK_GRAY))
                 .append(Component.text(usage, prefix.color())));
     }
 
