@@ -30,6 +30,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
+import java.util.Locale;
 
 public class CoreBase extends Core {
 
@@ -46,6 +47,7 @@ public class CoreBase extends Core {
 
     public CoreBase(boolean paper) {
         Core.instance(this);
+        Core.instance().localize().init(this.getClass(), "Messages", Locale.GERMANY);
 
         this.paper = paper;
 
