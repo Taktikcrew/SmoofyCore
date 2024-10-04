@@ -7,6 +7,7 @@ package de.smoofy.core.examples.player;
  * Created - 03.10.24, 16:56
  */
 
+import de.smoofy.core.api.Core;
 import de.smoofy.core.api.player.ICorePlayer;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -41,6 +42,14 @@ public class CorePlayerExample {
             player.sendTitle(Component.text("Title 4"), Component.text("Subtitle 4"), 2, 4, 2);
         } else if (test.equalsIgnoreCase("resettitle")) {
             player.resetTitle();
+        } else if (test.equalsIgnoreCase("addcoins")) {
+            player.coins(player.coins() + 1);
+        } else if (test.equalsIgnoreCase("coins")) {
+            player.message(Component.text("Coins: " + player.coins(), NamedTextColor.GOLD));
+        } else if (test.equalsIgnoreCase("players")) {
+            for (ICorePlayer corePlayer : Core.instance().corePlayerProvider().corePlayers()) {
+                player.message(Component.text(corePlayer.name()));
+            }
         }
     }
 

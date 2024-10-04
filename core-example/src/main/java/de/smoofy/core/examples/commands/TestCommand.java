@@ -84,7 +84,7 @@ public class TestCommand implements CommandExecutor, TabCompleter {
             }
             if (args[0].equalsIgnoreCase("coreplayer")) {
                 return List.of("message", "pmessage", "usage", "pusage", "noperms", "notonline", "actionbar",
-                        "pactionbar", "title1", "title2", "title3", "title4", "resettitle");
+                        "pactionbar", "title1", "title2", "title3", "title4", "resettitle", "addcoins", "coins", "players");
             }
         }
         return List.of();
