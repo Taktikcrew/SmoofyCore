@@ -18,6 +18,7 @@ import de.smoofy.core.api.module.tasks.ICoreTask;
 import de.smoofy.core.api.player.ICorePlayerProvider;
 import de.smoofy.core.api.time.ITimeHandler;
 import de.smoofy.core.base.config.ConfigImpl;
+import de.smoofy.core.base.database.DatabaseProvider;
 import de.smoofy.core.base.fetcher.UUIDFetcherImpl;
 import de.smoofy.core.base.localize.LocalizeImpl;
 import de.smoofy.core.base.logger.LoggerImpl;
@@ -50,6 +51,8 @@ public class CoreBase extends Core {
         Core.instance().localize().init(this.getClass(), "Messages", Locale.GERMANY);
 
         this.paper = paper;
+
+        new DatabaseProvider();
 
         this.uuidFetcher = new UUIDFetcherImpl();
         this.corePlayerProvider = new CorePlayerProviderImpl();

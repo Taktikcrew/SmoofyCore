@@ -16,6 +16,8 @@ repositories {
 
     maven("https://repo.codemc.io/repository/maven-releases/")
     maven("https://maven.evokegames.gg/snapshots")
+
+    maven("https://s01.oss.sonatype.org/content/repositories/snapshots")
 }
 
 dependencies {
@@ -31,6 +33,8 @@ dependencies {
 
     annotationProcessor("org.projectlombok:lombok:1.18.34")
     compileOnly("org.projectlombok:lombok:1.18.34")
+
+    implementation("dev.httpmarco.evelon:evelon-sql-mariadb:1.0.46-SNAPSHOT")
 }
 
 tasks.shadowJar {

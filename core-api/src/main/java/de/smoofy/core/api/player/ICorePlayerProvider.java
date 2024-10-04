@@ -9,6 +9,7 @@ package de.smoofy.core.api.player;
 
 import org.bukkit.entity.Player;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface ICorePlayerProvider {
@@ -38,11 +39,25 @@ public interface ICorePlayerProvider {
     ICorePlayer corePlayer(String name);
 
     /**
+     * Get all core players.
+     *
+     * @return a list of all core players
+     */
+    List<ICorePlayer> corePlayers();
+
+    /**
      * Initialize the core player.
      *
      * @param uuid the uuid of the player
      */
     void init(UUID uuid);
+
+    /**
+     * Update the core player.
+     *
+     * @param player the core player
+     */
+    void update(ICorePlayer player);
 
     /**
      * Check if the core player exists.

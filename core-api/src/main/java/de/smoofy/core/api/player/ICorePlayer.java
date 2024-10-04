@@ -73,11 +73,53 @@ public interface ICorePlayer {
     int coins();
 
     /**
+     * Set the coins of the player.
+     *
+     * @param coins the coins
+     */
+    void coins(int coins);
+
+    /**
      * Get the online time of the player.
      *
      * @return the player's online time
      */
     int onlineTime();
+
+    /**
+     * Set the online time of the player.
+     *
+     * @param onlineTime the online time
+     */
+    void onlineTime(int onlineTime);
+
+    /**
+     * Get the play time of the player.
+     *
+     * @return the player's play time
+     */
+    int playTime();
+
+    /**
+     * Set the play time of the player.
+     *
+     * @param playTime the play time
+     */
+    void playTime(int playTime);
+
+    /**
+     * Get the nick state of the player.
+     *
+     * @return the player's nick state
+     */
+    int nickState();
+
+    /**
+     * Set the nick state of the player.
+     *
+     * @param nickState the nick state
+     */
+    void nickState(int nickState);
 
     /**
      * Send a message to the player.

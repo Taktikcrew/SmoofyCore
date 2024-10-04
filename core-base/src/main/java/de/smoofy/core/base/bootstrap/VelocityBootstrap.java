@@ -13,6 +13,8 @@ import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.proxy.ProxyServer;
 import de.smoofy.core.base.CoreBase;
+import de.smoofy.core.base.velocity.listener.DisconnectListener;
+import de.smoofy.core.base.velocity.listener.PostLoginListener;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.slf4j.Logger;
@@ -40,5 +42,12 @@ public class VelocityBootstrap {
         instance = this;
 
         new CoreBase(false);
+
+        this.registerListener();
+    }
+
+    private void registerListener() {
+        this.proxyServer.getEventManager().register(this, new DisconnectListener());
+        this.proxyServer.getEventManager().register(this, new PostLoginListener());
     }
 }

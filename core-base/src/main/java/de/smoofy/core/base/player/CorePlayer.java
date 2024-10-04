@@ -10,6 +10,10 @@ package de.smoofy.core.base.player;
 import de.smoofy.core.api.Core;
 import de.smoofy.core.api.player.ICorePlayer;
 import de.smoofy.core.base.bootstrap.VelocityBootstrap;
+import de.smoofy.core.base.database.DatabaseProvider;
+import dev.httpmarco.evelon.PrimaryKey;
+import dev.httpmarco.evelon.Repository;
+import dev.httpmarco.evelon.Row;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -24,26 +28,49 @@ import java.time.Duration;
 import java.util.UUID;
 
 // TODO: Implement all methods
-public class CorePlayerImpl implements ICorePlayer {
+public class CorePlayer implements ICorePlayer {
 
+    @PrimaryKey
+    @Row(id = "uuid")
     private final UUID uniqueId;
     private final String name;
 
+    private int coins;
+    private int onlineTime;
+    private int playTime;
+    private int nickState;
+
+    @Row(ignore = true)
     private BukkitTask actionBarTask;
 
-    public CorePlayerImpl(Player player) {
+    @Row(ignore = true)
+    private Repository<CorePlayer> repository = DatabaseProvider.instance().corePlayerRepository();
+
+    public CorePlayer(UUID uniqueId, String name, int coins, int onlineTime, int playTime, int nickState) {
+        this.uniqueId = uniqueId;
+        this.name = name;
+        this.coins = coins;
+        this.onlineTime = onlineTime;
+        this.playTime = playTime;
+        this.nickState = nickState;
+    }
+
+    public CorePlayer(Player player) {
         this.uniqueId = player.getUniqueId();
         this.name = player.getName();
+        this.setDatabaseValues();
     }
 
-    public CorePlayerImpl(UUID uuid) {
+    public CorePlayer(UUID uuid) {
         this.uniqueId = uuid;
         this.name = Core.instance().uuidFetcher().name(this.uniqueId);
+        this.setDatabaseValues();
     }
 
-    public CorePlayerImpl(String name) {
+    public CorePlayer(String name) {
         this.name = name;
         this.uniqueId = Core.instance().uuidFetcher().uuid(name);
+        this.setDatabaseValues();
     }
 
     @Override
@@ -83,12 +110,42 @@ public class CorePlayerImpl implements ICorePlayer {
 
     @Override
     public int coins() {
-        throw new NotImplementedException("Not implemented yet.");
+        return this.coins;
+    }
+
+    @Override
+    public void coins(int coins) {
+        this.coins = coins;
     }
 
     @Override
     public int onlineTime() {
-        throw new NotImplementedException("Not implemented yet.");
+        return this.onlineTime;
+    }
+
+    @Override
+    public void onlineTime(int onlineTime) {
+        this.onlineTime = onlineTime;
+    }
+
+    @Override
+    public int playTime() {
+        return this.playTime;
+    }
+
+    @Override
+    public void playTime(int playTime) {
+        this.playTime = playTime;
+    }
+
+    @Override
+    public int nickState() {
+        return this.nickState;
+    }
+
+    @Override
+    public void nickState(int nickState) {
+        this.nickState = nickState;
     }
 
     @Override
@@ -175,6 +232,16 @@ public class CorePlayerImpl implements ICorePlayer {
     @Override
     public void resetTitle() {
         this.bukkitPlayer().resetTitle();
+    }
+
+    private void setDatabaseValues() {
+        var player = this.repository.query().match("uuid", this.uniqueId).findFirst();
+        if (player != null) {
+            this.coins = player.coins;
+            this.onlineTime = player.onlineTime;
+            this.playTime = player.playTime;
+            this.nickState = player.nickState;
+        }
     }
 
     @Override
