@@ -10,6 +10,7 @@ package de.smoofy.core.base.bootstrap;
 import com.github.retrooper.packetevents.PacketEvents;
 import de.smoofy.core.base.CoreBase;
 import de.smoofy.core.base.paper.listener.AsyncPlayerPreLoginListener;
+import de.smoofy.core.base.paper.listener.ItemBuilderListener;
 import de.smoofy.core.base.paper.listener.PlayerJoinListener;
 import de.smoofy.core.base.paper.listener.PlayerQuitListener;
 import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
@@ -55,6 +56,7 @@ public class PaperBootstrap extends JavaPlugin {
 
     private void registerListener() {
         new AsyncPlayerPreLoginListener();
+        new ItemBuilderListener();
         new PlayerJoinListener();
         new PlayerQuitListener();
     }
