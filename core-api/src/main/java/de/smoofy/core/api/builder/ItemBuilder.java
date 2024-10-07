@@ -31,8 +31,6 @@ import java.util.function.Consumer;
 @Accessors(fluent = true)
 public class ItemBuilder {
 
-    public static final List<ItemBuilder> eventItems = Lists.newArrayList();
-
     private final ItemStack itemStack;
     private final ItemMeta itemMeta;
 
@@ -121,13 +119,14 @@ public class ItemBuilder {
     }
 
     public <T extends Event> ItemBuilder event(String key, Class<T> clazz, Consumer<T> consumer) {
-        eventItems.add(this);
         this.key = key;
         this.clazz = clazz;
         this.consumer = consumer;
 
         this.itemMeta.getPersistentDataContainer().set(new NamespacedKey("core", "key"),
                 PersistentDataType.STRING, this.key);
+
+        Cache.cache(this);
 
         return this;
     }
@@ -141,6 +140,19 @@ public class ItemBuilder {
     public ItemStack build() {
         this.itemStack.setItemMeta(this.itemMeta);
         return this.itemStack;
+    }
+
+    public static class Cache {
+
+        private static final List<ItemBuilder> itemBuilderCache = Lists.newArrayList();
+
+        public static void cache(ItemBuilder itemBuilder) {
+            itemBuilderCache.add(itemBuilder);
+        }
+
+        public static ItemBuilder item(String key) {
+            return itemBuilderCache.stream().filter(itemBuilder -> itemBuilder.key.equals(key)).findFirst().orElse(null);
+        }
     }
 
 }

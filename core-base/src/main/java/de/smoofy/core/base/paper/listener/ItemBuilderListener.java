@@ -18,12 +18,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDropItemEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
-
-import java.util.Objects;
+import org.jetbrains.annotations.Nullable;
 
 public class ItemBuilderListener implements Listener {
 
@@ -65,30 +63,35 @@ public class ItemBuilderListener implements Listener {
             return;
         }
 
+        var itemStack = this.itemStack(event);
+        if (itemStack == null) {
+            return;
+        }
+        if (!itemStack.getItemMeta().getPersistentDataContainer().has(this.key)) {
+            return;
+        }
+
+        var item = ItemBuilder.Cache.item(itemStack.getItemMeta().getPersistentDataContainer().get(this.key, PersistentDataType.STRING));
+        if (item == null) {
+            return;
+        }
+        if (!item.clazz().isAssignableFrom(event.getClass())) {
+            return;
+        }
+        item.accept(event);
+    }
+
+    private <T extends Event> @Nullable ItemStack itemStack(T event) {
         ItemStack itemStack = null;
         if (event instanceof InventoryClickEvent) {
             itemStack = ((InventoryClickEvent) event).getCurrentItem();
         } else if (event instanceof PlayerInteractEvent) {
             itemStack = ((PlayerInteractEvent) event).getItem();
-        } else if (event instanceof PlayerDropItemEvent) {
-            itemStack = ((PlayerDropItemEvent) event).getItemDrop().getItemStack();
+        } else if (event instanceof EntityDropItemEvent) {
+            itemStack = ((EntityDropItemEvent) event).getItemDrop().getItemStack();
+        } else if (event instanceof EntityPickupItemEvent) {
+            itemStack = ((EntityPickupItemEvent) event).getItem().getItemStack();
         }
-        if (itemStack == null) {
-            return;
-        }
-
-        for (var item : ItemBuilder.eventItems) {
-            if (!item.clazz().isAssignableFrom(event.getClass())) {
-                continue;
-            }
-            if (!itemStack.getItemMeta().getPersistentDataContainer().has(this.key)) {
-                continue;
-            }
-            if (!Objects.equals(item.key(),
-                    itemStack.getItemMeta().getPersistentDataContainer().get(this.key, PersistentDataType.STRING))) {
-                continue;
-            }
-            item.accept(event);
-        }
+        return itemStack;
     }
 }
