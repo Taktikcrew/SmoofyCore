@@ -45,11 +45,6 @@ public class HologramProviderImpl implements IHologramProvider {
     }
 
     @Override
-    public void remove(String key) {
-        this.holograms.remove(this.hologram(key));
-    }
-
-    @Override
     public List<IHologram> holograms() {
         return this.holograms;
     }

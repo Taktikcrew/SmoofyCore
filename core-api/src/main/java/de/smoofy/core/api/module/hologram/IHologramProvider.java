@@ -7,6 +7,7 @@ package de.smoofy.core.api.module.hologram;
  * Created - 02.10.24, 16:05
  */
 
+import de.smoofy.core.api.annotation.DoNotUse;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Location;
 
@@ -47,14 +48,7 @@ public interface IHologramProvider {
      *
      * @param hologram the hologram to cache
      */
-    void cache(IHologram hologram);
-
-    /**
-     * Remove a hologram from the cache.
-     *
-     * @param key the key of the hologram
-     */
-    void remove(String key);
+    @DoNotUse void cache(IHologram hologram);
 
     /**
      * Get all cached holograms.
