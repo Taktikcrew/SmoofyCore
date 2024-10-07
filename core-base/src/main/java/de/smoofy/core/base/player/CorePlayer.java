@@ -27,7 +27,6 @@ import org.jetbrains.annotations.NotNull;
 import java.time.Duration;
 import java.util.UUID;
 
-// TODO: Implement all methods
 public class CorePlayer implements ICorePlayer {
 
     @PrimaryKey
@@ -84,13 +83,13 @@ public class CorePlayer implements ICorePlayer {
     }
 
     @Override
-    public String displayName() {
-        throw new NotImplementedException("Not implemented yet.");
+    public Component displayName() {
+        return this.bukkitPlayer().displayName();
     }
 
     @Override
     public NamedTextColor color() {
-        throw new NotImplementedException("Not implemented yet.");
+        return (NamedTextColor) this.bukkitPlayer().displayName().color();
     }
 
     @Override
@@ -211,6 +210,7 @@ public class CorePlayer implements ICorePlayer {
 
     @Override
     public void setTablist(boolean ingame) {
+        // todo
         throw new NotImplementedException("Not implemented yet.");
     }
 

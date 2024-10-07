@@ -35,7 +35,7 @@ public interface ICorePlayer {
      *
      * @return the player's display name
      */
-    String displayName();
+    Component displayName();
 
     /**
      * Get the color of the player.
