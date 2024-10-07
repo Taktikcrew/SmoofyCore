@@ -38,6 +38,7 @@ public interface IPhaseHandler {
      * Add a phase to the cache.
      *
      * @param phase the phase
+     * @hidden this method is not intended to be used by the end user
      */
     @DoNotUse void cache(Phase phase);
 

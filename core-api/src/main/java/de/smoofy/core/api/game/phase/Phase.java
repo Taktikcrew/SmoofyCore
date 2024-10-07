@@ -29,11 +29,15 @@ public abstract class Phase {
 
     /**
      * Called when the phase starts.
+     *
+     * @hidden this method is not intended to be used by the end user
      */
     @DoNotUse public abstract void onEnable();
 
     /**
      * Called when the phase stopps.
+     *
+     * @hidden this method is not intended to be used by the end user
      */
     @DoNotUse public abstract void onDisable();
 

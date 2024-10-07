@@ -33,6 +33,7 @@ public interface ICountdownProvider {
      * Cache a countdown.
      *
      * @param countdown the countdown to cache.
+     * @hidden this method is not intended to be used by the end user
      */
     @DoNotUse void cache(ICountdown countdown);
 

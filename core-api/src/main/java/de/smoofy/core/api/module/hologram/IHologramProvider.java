@@ -47,6 +47,7 @@ public interface IHologramProvider {
      * Cache a hologram.
      *
      * @param hologram the hologram to cache
+     * @hidden this method is not intended to be used by the end user
      */
     @DoNotUse void cache(IHologram hologram);
 
