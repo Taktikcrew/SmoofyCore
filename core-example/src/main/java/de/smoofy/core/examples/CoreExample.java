@@ -9,6 +9,7 @@ package de.smoofy.core.examples;
 
 import de.smoofy.core.api.Core;
 import de.smoofy.core.examples.commands.TestCommand;
+import de.smoofy.core.examples.game.countdown.CountdownTickListener;
 import de.smoofy.core.examples.listener.CorePlayerJoinListener;
 import de.smoofy.core.examples.listener.PlayerJoinListener;
 import lombok.Getter;
@@ -32,6 +33,7 @@ public class CoreExample extends JavaPlugin {
 
         new TestCommand();
 
+        Bukkit.getPluginManager().registerEvents(new CountdownTickListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), this);
         Bukkit.getPluginManager().registerEvents(new CorePlayerJoinListener(), this);
     }
