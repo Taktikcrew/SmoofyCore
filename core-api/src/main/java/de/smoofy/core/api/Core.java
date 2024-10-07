@@ -9,6 +9,9 @@ package de.smoofy.core.api;
 
 import de.smoofy.core.api.config.IConfig;
 import de.smoofy.core.api.fetcher.IUUIDFetcher;
+import de.smoofy.core.api.game.IGameConfiguration;
+import de.smoofy.core.api.game.countdown.ICountdownProvider;
+import de.smoofy.core.api.game.phase.IPhaseHandler;
 import de.smoofy.core.api.localization.ILocalize;
 import de.smoofy.core.api.logger.ILogger;
 import de.smoofy.core.api.message.IMessageBuilder;
@@ -61,6 +64,31 @@ public abstract class Core {
      * @return the {@link IUUIDFetcher}
      */
     public abstract IUUIDFetcher uuidFetcher();
+
+    /**
+     * Get the countdown provider.
+     *
+     * @return the {@link ICountdownProvider}
+     */
+    public abstract ICountdownProvider countdownProvider();
+
+    /**
+     * Get the phase handler.
+     *
+     * @return the {@link IPhaseHandler}
+     */
+    public abstract IPhaseHandler phaseHandler();
+
+    /**
+     * Create the game configuration.
+     *
+     * @param minPlayers the amount of minimum players
+     * @param maxPlayers the amount of maximum players
+     * @param teams the amount of teams
+     * @param teamSize the amount of players per team
+     * @return the created {@link IGameConfiguration}
+     */
+    public abstract IGameConfiguration gameConfiguration(int minPlayers, int maxPlayers, int teams, int teamSize);
 
     /**
      * Get the localization.
