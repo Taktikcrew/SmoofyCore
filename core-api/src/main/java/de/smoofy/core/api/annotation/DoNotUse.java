@@ -1,11 +1,11 @@
-package de.smoofy.core.api.annotation;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 07.10.24, 11:33
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.api.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

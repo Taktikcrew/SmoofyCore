@@ -1,11 +1,11 @@
-package de.smoofy.core.examples.modules.hologram;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 03.10.24, 11:47
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.examples.modules.hologram;
 
 import de.smoofy.core.api.Core;
 import de.smoofy.core.api.player.ICorePlayer;

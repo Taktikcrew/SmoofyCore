@@ -1,11 +1,11 @@
-package de.smoofy.core.api.time;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 27.09.24, 23:27
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.api.time;
 
 import de.smoofy.core.api.player.ICorePlayer;
 

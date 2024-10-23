@@ -1,11 +1,11 @@
-package de.smoofy.core.examples.game.phase;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 07.10.24, 14:08
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.examples.game.phase;
 
 import de.smoofy.core.api.game.phase.Phase;
 import net.kyori.adventure.text.Component;

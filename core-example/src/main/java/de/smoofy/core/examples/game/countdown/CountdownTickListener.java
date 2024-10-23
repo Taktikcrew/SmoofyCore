@@ -1,11 +1,11 @@
-package de.smoofy.core.examples.game.countdown;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 07.10.24, 13:58
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.examples.game.countdown;
 
 import de.smoofy.core.api.game.countdown.events.CountdownTickEvent;
 import net.kyori.adventure.text.Component;

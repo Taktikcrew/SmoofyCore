@@ -1,11 +1,11 @@
-package de.smoofy.core.api.message;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 27.09.24, 23:25
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.api.message;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;

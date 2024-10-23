@@ -1,11 +1,11 @@
-package de.smoofy.core.api.event;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 27.09.24, 22:49
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.api.event;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;

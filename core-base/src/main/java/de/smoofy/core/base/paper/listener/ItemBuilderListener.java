@@ -1,11 +1,11 @@
-package de.smoofy.core.base.paper.listener;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 06.10.24, 21:52
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.base.paper.listener;
 
 import de.smoofy.core.api.builder.ItemBuilder;
 import de.smoofy.core.base.bootstrap.PaperBootstrap;

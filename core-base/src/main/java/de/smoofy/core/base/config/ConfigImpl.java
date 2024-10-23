@@ -1,11 +1,11 @@
-package de.smoofy.core.base.config;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 02.10.24, 14:30
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.base.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

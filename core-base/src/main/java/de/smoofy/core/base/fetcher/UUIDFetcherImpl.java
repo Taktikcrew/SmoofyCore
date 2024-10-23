@@ -1,11 +1,11 @@
-package de.smoofy.core.base.fetcher;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 27.09.24, 23:52
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.base.fetcher;
 
 import com.google.common.collect.Maps;
 import de.smoofy.core.api.fetcher.IUUIDFetcher;

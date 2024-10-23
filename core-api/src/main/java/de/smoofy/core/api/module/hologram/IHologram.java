@@ -1,11 +1,11 @@
-package de.smoofy.core.api.module.hologram;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 02.10.24, 16:05
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.api.module.hologram;
 
 import de.smoofy.core.api.player.ICorePlayer;
 import net.kyori.adventure.text.Component;

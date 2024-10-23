@@ -1,11 +1,11 @@
-package de.smoofy.core.base.velocity.listener;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 04.10.24, 17:07
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.base.velocity.listener;
 
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.connection.DisconnectEvent;

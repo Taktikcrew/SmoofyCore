@@ -1,3 +1,10 @@
+/*
+ * Copyright ©️
+ * @author - Smoofy
+ * @GitHub - https://github.com/Smoofy19
+ * Created - 23.10.24, 13:13
+ */
+
 package de.smoofy.core.api.game.phase.event;
 
 import de.smoofy.core.api.event.BukkitEvent;
@@ -7,12 +14,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-/*
- * Copyright ©️
- * @author - Smoofy
- * @GitHub - https://github.com/Smoofy19
- * Created - 07.10.24, 11:42
- */
 @Getter
 @Setter
 @Accessors(fluent = true)

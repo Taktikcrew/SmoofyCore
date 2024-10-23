@@ -1,11 +1,11 @@
-package de.smoofy.core.api;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 27.09.24, 22:41
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.api;
 
 import de.smoofy.core.api.config.IConfig;
 import de.smoofy.core.api.fetcher.IUUIDFetcher;

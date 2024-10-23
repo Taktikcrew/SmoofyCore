@@ -1,11 +1,11 @@
-package de.smoofy.core.base.localize;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 28.09.24, 00:35
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.base.localize;
 
 import de.smoofy.core.api.localization.ILocalize;
 import net.kyori.adventure.key.Key;

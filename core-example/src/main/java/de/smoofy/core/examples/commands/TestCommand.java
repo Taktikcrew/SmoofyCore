@@ -1,10 +1,11 @@
-package de.smoofy.core.examples.commands;
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 29.09.24, 22:51
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.examples.commands;
 
 import de.smoofy.core.api.Core;
 import de.smoofy.core.examples.builder.InventoryBuilderExample;

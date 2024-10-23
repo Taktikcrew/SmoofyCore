@@ -1,11 +1,11 @@
-package de.smoofy.core.base;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 27.09.24, 23:46
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.base;
 
 import de.smoofy.core.api.Core;
 import de.smoofy.core.api.config.IConfig;

@@ -1,11 +1,11 @@
-package de.smoofy.core.base.paper.modules.hologram;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 02.10.24, 16:09
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.base.paper.modules.hologram;
 
 import com.google.common.collect.Lists;
 import de.smoofy.core.api.module.hologram.IHologram;

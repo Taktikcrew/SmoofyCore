@@ -1,11 +1,11 @@
-package de.smoofy.core.base.database;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 04.10.24, 16:49
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.base.database;
 
 import de.smoofy.core.base.player.CorePlayer;
 import dev.httpmarco.evelon.MariaDbLayer;

@@ -1,11 +1,11 @@
-package de.smoofy.core.api.logger.enumeration;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 27.09.24, 23:20
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.api.logger.enumeration;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

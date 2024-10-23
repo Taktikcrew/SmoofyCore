@@ -1,11 +1,11 @@
-package de.smoofy.core.examples.message;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 28.09.24, 11:42
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.examples.message;
 
 import de.smoofy.core.api.Core;
 import de.smoofy.core.api.message.IMessageBuilder;

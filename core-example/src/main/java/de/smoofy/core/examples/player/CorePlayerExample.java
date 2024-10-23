@@ -1,11 +1,11 @@
-package de.smoofy.core.examples.player;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 03.10.24, 16:56
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.examples.player;
 
 import de.smoofy.core.api.Core;
 import de.smoofy.core.api.player.ICorePlayer;

@@ -1,11 +1,11 @@
-package de.smoofy.core.examples.config;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 02.10.24, 14:43
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.examples.config;
 
 import de.smoofy.core.api.Core;
 import de.smoofy.core.api.config.IConfig;

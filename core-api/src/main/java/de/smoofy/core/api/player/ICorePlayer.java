@@ -1,11 +1,11 @@
-package de.smoofy.core.api.player;
-
 /*
  * Copyright ©️
  * @author - Smoofy
  * @GitHub - https://github.com/Smoofy19
- * Created - 28.09.24, 11:44
+ * Created - 23.10.24, 13:13
  */
+
+package de.smoofy.core.api.player;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
