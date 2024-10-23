@@ -60,7 +60,7 @@ compileOnly("de.smoofy.core:core-api:VERSION")
 ```
 
 ## Documentation & Examples
-For examples on how to use the API, please refer to the [examples](https://github.com/Smoofy19/Core/core-example).
+For examples on how to use the API, please refer to the [examples](https://github.com/Smoofy19/Core/tree/master/core-example).
 
 ## Contributing
 Contributions are welcome! If you have suggestions or found any issues, please open an issue or create a pull request.
