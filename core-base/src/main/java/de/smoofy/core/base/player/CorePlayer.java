@@ -216,17 +216,11 @@ public class CorePlayer implements ICorePlayer {
 
     @Override
     public void sendTitle(@NotNull Component title, @NotNull Component subtitle, int fadeIn, int stay, int fadeOut) {
-        if (fadeIn == -1) {
-            fadeIn = 1;
+        var times = Title.Times.times(Duration.ofSeconds(fadeIn), Duration.ofSeconds(stay), Duration.ofSeconds(fadeOut));
+        if (fadeIn == -1 || stay == -1 || fadeOut == -1) {
+            times = Title.DEFAULT_TIMES;
         }
-        if (stay == -1) {
-            stay = 3;
-        }
-        if (fadeOut == -1) {
-            fadeOut = 1;
-        }
-        this.bukkitPlayer().showTitle(Title.title(title, subtitle, Title.Times.times(Duration.ofSeconds(fadeIn),
-                Duration.ofSeconds(stay), Duration.ofSeconds(fadeOut))));
+        this.bukkitPlayer().showTitle(Title.title(title, subtitle, times));
     }
 
     @Override
