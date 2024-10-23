@@ -10,7 +10,7 @@ This is a useful core that will simplify your coding experience with paper, velo
 - [License](#license)
 
 ## Installation
-1. Download the latest version of the Core from the [releases](https://github.com/Smoofy19/Core/releases).
+1. Download the latest version of the Core from the [Discord](https://discord.com/invite/335H5v74DC).
 2. Place the `.jar` file in the `plugins` folder of your server.
 3. Restart your server.
 4. You are able to use the API now.
