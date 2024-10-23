@@ -3,9 +3,9 @@ plugins {
 }
 
 dependencies {
-    compileOnly("com.velocitypowered:velocity-api:3.1.1")
+    compileOnly(libs.velocity)
 
-    compileOnly("org.fusesource.jansi:jansi:2.4.0")
+    compileOnly(libs.jansi)
 }
 
 publishing {

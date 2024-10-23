@@ -16,10 +16,10 @@ allprojects {
     }
 
     dependencies {
-        implementation("io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT")
+        implementation(rootProject.libs.paper)
 
-        annotationProcessor("org.projectlombok:lombok:1.18.34")
-        compileOnly("org.projectlombok:lombok:1.18.34")
+        annotationProcessor(rootProject.libs.lombok)
+        compileOnly(rootProject.libs.lombok)
     }
 
     tasks.withType<JavaCompile>().configureEach {

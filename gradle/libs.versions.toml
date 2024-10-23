@@ -1,0 +1,32 @@
+[versions]
+paper = "1.21.1-R0.1-SNAPSHOT"
+velocity = "3.1.1"
+
+packetevents = "2.5.0"
+entitylib = "2.4.10-SNAPSHOT"
+
+evelon = "1.0.46-SNAPSHOT"
+
+lombok = "1.18.34"
+jansi = "2.4.0"
+
+shadow = "8.1.1"
+plugindescription = "0.6.0"
+paperweight = "1.7.3"
+
+[plugins]
+shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow"}
+plugindescription = { id = "net.minecrell.plugin-yml.paper", version.ref = "plugindescription" }
+paperweight = { id = "io.papermc.paperweight.userdev", version.ref = "paperweight" }
+
+[libraries]
+paper = { group = "io.papermc.paper", name = "paper-api", version.ref = "paper" }
+velocity = { group = "com.velocitypowered", name = "velocity-api", version.ref = "velocity" }
+
+packetevents = { group = "com.github.retrooper", name = "packetevents-spigot", version.ref = "packetevents" }
+entitylib = { group = "me.tofaa.entitylib", name = "spigot", version.ref = "entitylib" }
+
+evelon = { group = "dev.httpmarco.evelon", name = "evelon-sql-mariadb", version.ref = "evelon" }
+
+lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
+jansi = { group = "org.fusesource.jansi", name = "jansi", version.ref = "jansi" }

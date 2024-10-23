@@ -1,9 +1,9 @@
 import net.minecrell.pluginyml.bukkit.BukkitPluginDescription
 
 plugins {
-    id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("net.minecrell.plugin-yml.paper") version "0.6.0"
-    id("io.papermc.paperweight.userdev") version "1.7.3"
+    alias(libs.plugins.shadow)
+    alias(libs.plugins.plugindescription)
+    alias(libs.plugins.paperweight)
 }
 
 repositories {
@@ -16,14 +16,14 @@ repositories {
 dependencies {
     implementation(project(":core-api"))
 
-    paperweight.paperDevBundle("1.21.1-R0.1-SNAPSHOT")
+    paperweight.paperDevBundle(libs.versions.paper)
 
-    compileOnly("com.velocitypowered:velocity-api:3.1.1")
+    compileOnly(libs.velocity)
 
-    implementation("com.github.retrooper:packetevents-spigot:2.5.0")
-    implementation("me.tofaa.entitylib:spigot:2.4.10-SNAPSHOT")
+    implementation(libs.packetevents)
+    implementation(libs.entitylib)
 
-    implementation("dev.httpmarco.evelon:evelon-sql-mariadb:1.0.46-SNAPSHOT")
+    implementation(libs.evelon)
 }
 
 tasks.shadowJar {
