@@ -10,7 +10,7 @@ This is a useful core that will simplify your coding experience with paper, velo
 - [License](#license)
 
 ## Installation
-1. Download the latest version of the Core from the [releases](https://github.com/Smoofy19/Core/releases).
+1. Download the latest version of the Core from the [Discord](https://discord.com/invite/335H5v74DC).
 2. Place the `.jar` file in the `plugins` folder of your server.
 3. Restart your server.
 4. You are able to use the API now.
@@ -27,17 +27,17 @@ You also have to add the dependency to your project. You can do this by adding t
 ### Repository
 #### Gradle Kotlin DSL
 ```kotlin
-maven("https://maven.pkg.github.com/Smoofy19/Core")
+maven("https://maven.pkg.github.com/smoofy19/SmoofyCore")
 ```
 #### Gradle Groovy
 ```groovy
-maven { url 'https://maven.pkg.github.com/Smoofy19/Core' }
+maven { url 'https://maven.pkg.github.com/smoofy19/SmoofyCore' }
 ```
 #### Maven
 ```xml
 <repository>
    <id>smoofycore</id>
-   <url>https://maven.pkg.github.com/Smoofy19/Core</url>
+   <url>https://maven.pkg.github.com/smoofy19/SmoofyCore</url>
 </repository>
 ```
 
@@ -60,10 +60,11 @@ compileOnly("de.smoofy.core:core-api:VERSION")
 ```
 
 ## Documentation & Examples
-For examples on how to use the API, please refer to the [examples](https://github.com/Smoofy19/Core/core-example).
+You can find the documentation [here](https://smoofy19.github.io/SmoofyCore-Docs/).
+For examples on how to use the API, please refer to the [examples](https://github.com/Smoofy19/SmoofyCore/tree/master/core-example).
 
 ## Contributing
 Contributions are welcome! If you have suggestions or found any issues, please open an issue or create a pull request.
 
 ## License
-This project is licensed under the [Apache-2.0 license](https://github.com/Smoofy19/Core/blob/master/LICENSE).
+This project is licensed under the [Apache-2.0 license](https://github.com/Smoofy19/SmoofyCore/blob/master/LICENSE).
