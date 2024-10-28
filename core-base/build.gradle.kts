@@ -27,8 +27,7 @@ dependencies {
 }
 
 tasks.shadowJar {
-    archiveBaseName.set("Core")
-    archiveClassifier.set("")
+    archiveFileName.set("Core-${project.version}.jar")
     manifest {
         attributes["paperweight-mappings-namespace"] = "spigot"
     }
