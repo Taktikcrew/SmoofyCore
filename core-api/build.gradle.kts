@@ -12,7 +12,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/Smoofy19/Core")
+            url = uri("https://maven.pkg.github.com/smoofy19/SmoofyCore")
             credentials {
                 username = System.getenv("USERNAME")
                 password = System.getenv("TOKEN")
@@ -21,9 +21,6 @@ publishing {
     }
     publications {
         register<MavenPublication>("gpr") {
-            from(components["java"])
-        }
-        create<MavenPublication>("mavenJava") {
             from(components["java"])
         }
     }
