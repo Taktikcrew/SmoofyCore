@@ -2,6 +2,8 @@
 paper = "1.21.3-R0.1-SNAPSHOT"
 velocity = "3.1.1"
 
+luckperms = "5.4"
+
 packetevents = "2.5.0"
 entitylib = "2.4.10-SNAPSHOT"
 
@@ -22,6 +24,8 @@ paperweight = { id = "io.papermc.paperweight.userdev", version.ref = "paperweigh
 [libraries]
 paper = { group = "io.papermc.paper", name = "paper-api", version.ref = "paper" }
 velocity = { group = "com.velocitypowered", name = "velocity-api", version.ref = "velocity" }
+
+luckperms = { group = "net.luckperms", name = "api", version.ref = "luckperms" }
 
 packetevents = { group = "com.github.retrooper", name = "packetevents-spigot", version.ref = "packetevents" }
 entitylib = { group = "me.tofaa.entitylib", name = "spigot", version.ref = "entitylib" }

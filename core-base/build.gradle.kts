@@ -1,4 +1,4 @@
-import net.minecrell.pluginyml.bukkit.BukkitPluginDescription
+import net.minecrell.pluginyml.paper.PaperPluginDescription
 
 plugins {
     alias(libs.plugins.shadow)
@@ -43,6 +43,9 @@ paper {
     author = "Smoofy"
     apiVersion = "1.21"
     main = "de.smoofy.core.base.bootstrap.PaperBootstrap"
-
-    load = BukkitPluginDescription.PluginLoadOrder.POSTWORLD
+    serverDependencies {
+        register("LuckPerms") {
+            load = PaperPluginDescription.RelativeLoadOrder.BEFORE
+        }
+    }
 }
