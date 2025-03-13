@@ -118,6 +118,11 @@ public class ItemBuilder {
         return this;
     }
 
+    public ItemBuilder customModelData(int modelData) {
+        this.itemMeta.setCustomModelData(modelData);
+        return this;
+    }
+
     public <T extends Event> ItemBuilder event(String key, Class<T> clazz, Consumer<T> consumer) {
         this.key = key;
         this.clazz = clazz;

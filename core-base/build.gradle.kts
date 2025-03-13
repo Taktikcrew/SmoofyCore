@@ -27,14 +27,11 @@ dependencies {
 }
 
 tasks.shadowJar {
+    dependsOn(tasks.reobfJar)
     archiveFileName.set("Core-${project.version}.jar")
     manifest {
         attributes["paperweight-mappings-namespace"] = "spigot"
     }
-}
-
-tasks.assemble {
-    dependsOn(tasks.reobfJar)
 }
 
 paper {
