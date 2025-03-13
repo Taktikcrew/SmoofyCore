@@ -14,8 +14,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/smoofy19/SmoofyCore")
             credentials {
-                username = System.getenv("USERNAME")
-                password = System.getenv("TOKEN")
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.token") as String? ?: System.getenv("TOKEN")
             }
         }
     }
