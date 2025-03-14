@@ -20,18 +20,18 @@ dependencies {
 
     compileOnly(libs.velocity)
 
-    implementation(libs.packetevents)
-    implementation(libs.entitylib)
-
     implementation(libs.evelon)
 }
 
 tasks.shadowJar {
-    dependsOn(tasks.reobfJar)
     archiveFileName.set("Core-${project.version}.jar")
     manifest {
         attributes["paperweight-mappings-namespace"] = "spigot"
     }
+}
+
+tasks.reobfJar {
+    dependsOn(tasks.shadowJar)
 }
 
 paper {
