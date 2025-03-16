@@ -20,7 +20,9 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.title.Title;
 import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.scheduler.BukkitTask;
 import org.jetbrains.annotations.NotNull;
 
@@ -95,6 +97,16 @@ public class CorePlayer implements ICorePlayer {
     @Override
     public Player bukkitPlayer() {
         return Bukkit.getPlayer(this.uuid());
+    }
+
+    @Override
+    public PlayerInventory inventory() {
+        return this.bukkitPlayer().getInventory();
+    }
+
+    @Override
+    public Location location() {
+        return this.bukkitPlayer().getLocation();
     }
 
     @Override

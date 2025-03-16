@@ -9,7 +9,9 @@ package de.smoofy.core.api.player;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.PlayerInventory;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
@@ -50,6 +52,20 @@ public interface ICorePlayer {
      * @return {@link Player}
      */
     Player bukkitPlayer();
+
+    /**
+     * Get the inventory of the player.
+     *
+     * @return the player's inventory
+     */
+    PlayerInventory inventory();
+
+    /**
+     * Get the location of the player.
+     *
+     * @return the player's location
+     */
+    Location location();
 
     /**
      * Get the velocity player.
