@@ -24,7 +24,9 @@ import net.luckperms.api.model.group.Group;
 import net.luckperms.api.model.user.User;
 import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.scheduler.BukkitTask;
 import org.jetbrains.annotations.NotNull;
 
@@ -122,6 +124,19 @@ public class CorePlayer implements ICorePlayer {
     @Override
     public Optional<com.velocitypowered.api.proxy.Player> velocityPlayer() {
         return VelocityBootstrap.instance().proxyServer().getPlayer(this.uuid());
+
+    public PlayerInventory inventory() {
+        return this.bukkitPlayer().getInventory();
+    }
+
+    @Override
+    public Location location() {
+        return this.bukkitPlayer().getLocation();
+    }
+
+    @Override
+    public com.velocitypowered.api.proxy.Player velocityPlayer() {
+        return VelocityBootstrap.instance().proxyServer().getPlayer(this.uuid()).orElse(null);
     }
 
     @Override

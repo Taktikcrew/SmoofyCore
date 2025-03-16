@@ -78,6 +78,11 @@ public class ItemBuilder {
         return this;
     }
 
+    public <P, C> ItemBuilder namespacedKey(NamespacedKey key, PersistentDataType<P, C> type, C value) {
+        this.itemMeta.getPersistentDataContainer().set(key, type, value);
+        return this;
+    }
+
     public ItemBuilder itemFlags(ItemFlag... itemFlags) {
         this.itemMeta.addItemFlags(itemFlags);
         return this;
