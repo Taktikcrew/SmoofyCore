@@ -125,18 +125,21 @@ public class CorePlayer implements ICorePlayer {
     public Optional<com.velocitypowered.api.proxy.Player> velocityPlayer() {
         return VelocityBootstrap.instance().proxyServer().getPlayer(this.uuid());
 
+    }
+
     public PlayerInventory inventory() {
-        return this.bukkitPlayer().getInventory();
+        if (this.bukkitPlayer().isPresent()) {
+            return this.bukkitPlayer().get().getInventory();
+        }
+        return null;
     }
 
     @Override
     public Location location() {
-        return this.bukkitPlayer().getLocation();
-    }
-
-    @Override
-    public com.velocitypowered.api.proxy.Player velocityPlayer() {
-        return VelocityBootstrap.instance().proxyServer().getPlayer(this.uuid()).orElse(null);
+        if (this.bukkitPlayer().isPresent()) {
+            return this.bukkitPlayer().get().getLocation();
+        }
+        return null;
     }
 
     @Override
