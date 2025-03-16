@@ -5,7 +5,7 @@ plugins {
 allprojects {
     apply(plugin = "java-library")
 
-    group = "de.smoofy.core"
+    group = "de.taktikcrew.core"
     version = project.version
 
     repositories {
