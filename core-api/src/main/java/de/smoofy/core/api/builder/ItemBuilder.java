@@ -78,7 +78,7 @@ public class ItemBuilder {
         return this;
     }
 
-    public ItemBuilder setKey(NamespacedKey key, PersistentDataType<Object, Object> type, Object value) {
+    public ItemBuilder namespacedKey(NamespacedKey key, PersistentDataType<Object, Object> type, Object value) {
         this.itemMeta.getPersistentDataContainer().set(key, type, value);
         return this;
     }
